@@ -1,37 +1,49 @@
+<div align="center">
+
+<img src="docs/icon.png" width="128" alt="Codex">
+
+# Codex — D&D character sheets
+
+### D&D 5e CHARACTER SHEETS · WINDOWS · LINUX · ANDROID
+
+![Version](https://img.shields.io/github/v/release/FLS76/Codex-dnd-character-sheets?label=version&v=1)
+![License](https://img.shields.io/github/license/FLS76/Codex-dnd-character-sheets?label=license&v=1)
+![Platforms](https://img.shields.io/badge/Windows%20%7C%20Linux%20%7C%20Android-51418d?label=platforms)
+![Downloads](https://img.shields.io/github/downloads/FLS76/Codex-dnd-character-sheets/total?label=downloads&color=blue&v=1)
+
+**A local application for keeping visual Dungeons & Dragons 5e character sheets.**
+
+Current version `1.0.0`. Data stays on your device: no accounts, no server,
+no network requests.
+
 [Русский](README.md)
 
-# Codex — D&D Character Sheets
+</div>
 
-![Release](https://img.shields.io/github/v/release/FLS76/dnd-character-sheets?label=version&v=1)
-![License](https://img.shields.io/github/license/FLS76/dnd-character-sheets?label=license&v=1)
-![Platforms](https://img.shields.io/badge/Windows%20%7C%20Linux%20%7C%20Android-51418d?label=platforms)
-![Downloads](https://img.shields.io/github/downloads/FLS76/dnd-character-sheets/total?label=downloads&color=blue&v=1)
-
-A local application for keeping visual Dungeons & Dragons 5e character sheets.
-Current version: `1.0.0`. Supported on Windows, Linux and Android.
+---
 
 ![Character sheet](docs/06-en-sheet.png)
 
 ## Features
 
-- two working modes: individual sheets and a shared table holding several sheets;
+- two working modes: individual sheets and a shared table with several sheets;
 - profiles and sessions with local storage;
-- D&D 5e rulesets for 2014 and 2024;
+- D&D 5e rules editions 2014 and 2024;
 - full and compact sheet templates;
-- built-in `?` help next to every field;
+- built-in help `?` on every parameter;
 - dark and light themes;
 - Russian and English interface;
 - automatic saving to local storage;
-- sheet export to PDF: system print dialog on desktop, Share/PDF on Android;
-- table with panning, zooming, draggable sheets and edge buttons for adding sheets;
-- touch controls for the table: drag, pinch-zoom, tap to open a sheet;
-- hideable table toolbar on Android with landscape orientation locked for the table;
+- export of an open sheet to PDF: the system print dialog on desktop, Share/PDF on Android;
+- a table with panning, zooming, dragging sheets and adding them at the edges;
+- touch control on the table: drag, pinch-zoom, tap to open a sheet;
+- a hideable table panel on Android with landscape orientation locked;
 - localized standard Electron menu;
-- installer with language, folder and shortcut selection plus a review screen.
+- an installer that asks for language, folder and shortcuts, then shows a parameter check screen.
 
-## How to download
+## Download
 
-Ready-made files are in the **[Releases](../../releases)** section. Download the one for your platform and run it.
+Ready-made files are in **[Releases](../../releases)**. Download the one for your platform and run it.
 
 | Platform | File | Size |
 |---|---|---|
@@ -41,42 +53,42 @@ Ready-made files are in the **[Releases](../../releases)** section. Download the
 | Android | `DND-Character-Sheets-1.0.0.apk` | 3.5 MB |
 | Android | `DND-Character-Sheets-1.0.0.aab` | 3.4 MB |
 
-**Windows.** Download the `.exe` and run it. The installer asks for language, folder and shortcuts, then shows a review screen.
+**Windows.** Download the `.exe` and run it. The installer asks for language, folder and shortcuts, then shows a verification screen.
 
-**Linux, AppImage.** No installation needed. GitHub does not keep the execute permission on downloaded files, so run this once:
+**Linux, AppImage.** No installation needed. GitHub does not preserve the execute bit for downloaded files, so run this once:
 
 ```bash
 chmod +x DND-Character-Sheets-1.0.0.AppImage
 ./DND-Character-Sheets-1.0.0.AppImage
 ```
 
-**Linux, deb.** For Debian and Ubuntu based distributions:
+**Linux, deb.** For Debian-based distributions and Ubuntu derivatives:
 
 ```bash
 sudo apt install ./DND-Character-Sheets-1.0.0.deb
 ```
 
-**Android.** Download the `.apk`, allow installing from this source in your Android settings, and open the file. The app is signed with a permanent key, so every future version updates the already installed app.
+**Android.** Download the `.apk`, allow installation from this source in Android settings, and open the file. The app is signed with a permanent key, so every future version updates the one you already installed.
 
-Both Linux files are built automatically on the free GitHub Actions Linux runner — the workflow `.github/workflows/release-linux.yml` builds `.AppImage` and `.deb` when a `v*` tag appears and attaches them to the release.
+Both Linux files are built automatically on a free GitHub Actions Linux runner — the workflow `.github/workflows/release-linux.yml` builds the `.AppImage` and `.deb` when a `v*` tag appears and attaches them to the release.
 
 ## Screenshots
 
-| | |
-|---|---|
-| ![Start screen](docs/01-en-start.png) | ![Mode selection](docs/02-en-modes.png) |
-| **Start screen** — no account needed | **Mode selection** — personal sheets or a shared table |
-| ![Profiles](docs/03-en-profiles.png) | ![New session](docs/04-en-new-session.png) |
-| **Profiles** — own or shared | **New session** — per game and per ruleset |
-| ![Shared table](docs/05-en-table.png) | ![Character sheet](docs/06-en-sheet.png) |
-| **Shared table** — sheets are draggable, the table pans and zooms | **Character sheet** — `?` help on every field |
+| | | |
+|---|---|---|
+| ![Start screen](docs/01-en-start.png) | ![Mode selection](docs/02-en-modes.png) | |
+| **Start screen** — entry without an account | **Mode selection** — personal table or shared table | |
+| ![Profiles](docs/03-en-profiles.png) | ![Creating a session](docs/04-en-new-session.png) | |
+| **Profiles** — your own or shared | **Creating a session** — for play or for rules editing | |
+| ![Shared table](docs/05-en-table.png) | ![Character sheet](docs/06-en-sheet.png) | |
+| **Shared table** — sheets drag, the table pans and zooms | **Character sheet** — help `?` on every field | |
 
 ## License
 
-Apache-2.0. Full text is in [LICENSE](LICENSE). The code may be modified and used in your own projects provided you keep the copyright notice.
+Apache-2.0. Full text is in [LICENSE](LICENSE). The code may be modified and used in your own projects provided you keep the attribution notice.
 
 ## Privacy
 
-The app works locally: sheet, profile and session data is stored in the app profile and is never sent anywhere. System backup is disabled in the AndroidManifest, the WebView permission is only used by the internal Capacitor runtime, and the app performs no network requests.
+The application works locally: sheet, profile and session data are stored in the application profile and never sent anywhere. System backup is disabled in AndroidManifest, and the WebView permission is used only by Capacitor's internal runtime; the application makes no network requests.
 
-One limitation: in the "everyone on one device" mode separate devices do not sync with each other — this is a local-first app with no server.
+Limitation on sync: in “everyone has their own device” mode, separate devices do not sync with each other — this is a local-first application with no server.
