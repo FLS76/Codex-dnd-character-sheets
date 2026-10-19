@@ -16,6 +16,8 @@
 Current version `1.0.0`. Data stays on your device: no accounts, no server,
 no network requests.
 
+Product page: [fworkslab.github.io/products/codex](https://fworkslab.github.io/products/codex/index.en.html)
+
 [Русский](README.md)
 
 </div>

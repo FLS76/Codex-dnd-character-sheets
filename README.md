@@ -16,6 +16,8 @@
 Текущая версия `1.0.0`. Данные хранятся на устройстве: без аккаунтов,
 без сервера, без сетевых запросов.
 
+Страница продукта: [fworkslab.github.io/products/codex](https://fworkslab.github.io/products/codex/)
+
 [English](README.en.md)
 
 </div>
