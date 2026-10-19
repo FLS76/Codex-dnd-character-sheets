@@ -6,10 +6,10 @@
 
 ### D&D 5e CHARACTER SHEETS · WINDOWS · LINUX · ANDROID
 
-![Version](https://img.shields.io/github/v/release/FLS76/Codex-dnd-character-sheets?label=version&v=1)
-![License](https://img.shields.io/github/license/FLS76/Codex-dnd-character-sheets?label=license&v=1)
+![Version](https://img.shields.io/github/v/release/fworkslab/Codex-dnd-character-sheets?label=version&v=1)
+![License](https://img.shields.io/github/license/fworkslab/Codex-dnd-character-sheets?label=license&v=1)
 ![Platforms](https://img.shields.io/badge/Windows%20%7C%20Linux%20%7C%20Android-51418d?label=platforms)
-![Downloads](https://img.shields.io/github/downloads/FLS76/Codex-dnd-character-sheets/total?label=downloads&color=blue&v=1)
+![Downloads](https://img.shields.io/github/downloads/fworkslab/Codex-dnd-character-sheets/total?label=downloads&color=blue&v=1)
 
 **A local application for keeping visual Dungeons & Dragons 5e character sheets.**
 

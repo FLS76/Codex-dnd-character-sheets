@@ -27,9 +27,9 @@
   "author": {
     "name": "F Works",
     "email": "337310929+FLS76@users.noreply.github.com",
-    "url": "https://github.com/FLS76"
+    "url": "https://github.com/fworkslab"
   },
-  "homepage": "https://github.com/FLS76/dnd-character-sheets",
+  "homepage": "https://fworkslab.github.io/products/codex/",
   "dependencies": {
     "@capacitor/android": "^8.5.2",
     "@capacitor/app": "^8.1.1",
