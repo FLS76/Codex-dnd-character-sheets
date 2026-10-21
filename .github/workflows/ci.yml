@@ -12,6 +12,7 @@ on:
 
 permissions:
   contents: read
+  pull-requests: read
 
 concurrency:
   group: "ci-${{ github.ref }}"
@@ -45,3 +46,20 @@ jobs:
             | sha256sum -c -
           tar -xzf /tmp/actionlint.tar.gz -C /usr/local/bin actionlint
           actionlint -shellcheck= -pyflakes= .github/workflows/*.yml
+
+      # Developer Certificate of Origin: у каждого коммита в pull request
+      # должна быть строка Signed-off-by. Проверяем через API — история при
+      # checkout неглубокая, и base..HEAD по ней не посчитать.
+      - name: Check DCO sign-off
+        if: github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: "${{ github.token }}"
+        run: |
+          bad=$(gh api "repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/commits" --paginate \
+            --jq '.[] | select(.commit.message | test("(?im)^signed-off-by:") | not) | .sha')
+          if [ -n "$bad" ]; then
+            echo "::error::These commits have no Signed-off-by line. Use git commit -s."
+            echo "$bad"
+            exit 1
+          fi
+          echo "Every commit carries a DCO sign-off."
