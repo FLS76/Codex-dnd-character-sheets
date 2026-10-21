@@ -40,25 +40,61 @@ async function copyTree(source, destination) {
 await rm(tempOutput, { recursive: true, force: true })
 await mkdir(tempOutput, { recursive: true })
 
-await new Promise((resolve, reject) => {
-  const child = spawn(process.execPath, [builderCli, '--win', `--config.directories.output=${tempOutput}`], {
-    cwd: root,
-    stdio: 'inherit',
-    shell: false,
-    env: {
-      ...process.env,
-      ELECTRON_CACHE: path.join(toolsRoot, 'Caches', 'electron'),
-      ELECTRON_BUILDER_CACHE: path.join(toolsRoot, 'Caches', 'electron-builder'),
-      TEMP: path.join(toolsRoot, 'Temp', 'project-builds'),
-      TMP: path.join(toolsRoot, 'Temp', 'project-builds'),
-    },
+// electron-builder 26 распаковывает Electron во временный каталог
+// «win-unpacked.tmp» и переименовывает его в «win-unpacked». Windows
+// Defender держит только что распакованные .exe и .dll, и переименование
+// падает с EPERM «Отказано в доступе». Через полминуты файлы отпускаются,
+// поэтому сборка повторяется: архив Electron уже лежит в кеше, второй проход
+// занимает меньше времени.
+const MAX_ATTEMPTS = 3
+const RETRY_DELAY_MS = 45000
+
+function runBuilder() {
+  return new Promise((resolve, reject) => {
+    const child = spawn(process.execPath, [builderCli, '--win', `--config.directories.output=${tempOutput}`], {
+      cwd: root,
+      stdio: ['ignore', 'pipe', 'pipe'],
+      shell: false,
+      env: {
+        ...process.env,
+        ELECTRON_CACHE: path.join(toolsRoot, 'Caches', 'electron'),
+        ELECTRON_BUILDER_CACHE: path.join(toolsRoot, 'Caches', 'electron-builder'),
+        TEMP: path.join(toolsRoot, 'Temp', 'project-builds'),
+        TMP: path.join(toolsRoot, 'Temp', 'project-builds'),
+      },
+    })
+
+    let output = ''
+    const collect = (chunk) => {
+      output += chunk.toString()
+      process.stdout.write(chunk)
+    }
+    child.stdout.on('data', collect)
+    child.stderr.on('data', collect)
+
+    child.on('error', reject)
+    child.on('exit', (code) => {
+      if (code === 0) resolve()
+      else reject(new Error(`Windows build failed with code ${code}`, { cause: output }))
+    })
   })
-  child.on('error', reject)
-  child.on('exit', (code) => {
-    if (code === 0) resolve()
-    else reject(new Error(`Windows build failed with code ${code}`))
-  })
-})
+}
+
+for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+  try {
+    await runBuilder()
+    break
+  } catch (error) {
+    const output = String(error?.cause ?? '')
+    const locked = /EPERM/.test(output) && /rename/.test(output)
+    if (!locked || attempt === MAX_ATTEMPTS) throw error
+    console.log(
+      `\nЗащитник Windows ещё держит распакованные файлы. Повтор через ${RETRY_DELAY_MS / 1000} с (попытка ${attempt + 1} из ${MAX_ATTEMPTS})...`,
+    )
+    await rm(path.join(tempOutput, 'win-unpacked.tmp'), { recursive: true, force: true })
+    await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY_MS))
+  }
+}
 
 await rm(projectOutput, { recursive: true, force: true })
 await copyTree(tempOutput, projectOutput)
