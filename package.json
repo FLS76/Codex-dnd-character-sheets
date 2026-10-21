@@ -30,6 +30,13 @@
     "url": "https://github.com/fworkslab"
   },
   "homepage": "https://fworkslab.github.io/products/codex/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fworkslab/Codex-dnd-character-sheets.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fworkslab/Codex-dnd-character-sheets/issues"
+  },
   "dependencies": {
     "@capacitor/android": "^8.5.2",
     "@capacitor/app": "^8.1.1",
@@ -51,7 +58,7 @@
     "@vitejs/plugin-react": "^6.1.1",
     "concurrently": "^10.0.5",
     "electron": "^44.4.5",
-    "electron-builder": "^25.1.8",
+    "electron-builder": "^26.15.3",
     "png-to-ico": "^3.0.2",
     "rcedit": "^5.0.2",
     "sharp": "^0.35.4",
