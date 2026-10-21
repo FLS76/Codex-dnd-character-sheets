@@ -54,7 +54,7 @@
     "electron-builder": "^25.1.8",
     "png-to-ico": "^3.0.2",
     "rcedit": "^5.0.2",
-    "sharp": "^0.35.4",
+    "sharp": "^0.35.5",
     "typescript": "^7.0.2",
     "vite": "^8.3.0",
     "wait-on": "^9.1.0"
